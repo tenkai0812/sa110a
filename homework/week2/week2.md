@@ -103,3 +103,112 @@ $ deno run fibonacci_loop.js
 fibonacci(45)=1134903170
 time:1ms
 ```
+
+## 巴斯卡三角形
+- [巴斯卡三角形](https://zh.wikipedia.org/wiki/%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%E5%BD%A2)
+- 巴斯卡恆等式:<img src = './恆等式.PNG'>
+我們這次換成排列組合，這裡為範例:
+```=
+function c(n, k) {
+  if (k==0 || k==n) return 1
+  //數學計算
+  return c(n-1, k) + c(n-1, k-1)
+}
+
+console.log("c(5,2)=", c(5,2))
+console.log("c(7,3)=", c(7,3))
+console.log("c(12,5)=", c(12,5))
+console.log("c(60,30)=", c(60,30))
+```
+**BigO = 2^n**
+```
+sky@MSI MINGW64 ~/Desktop/VSCode  (GITHUB)/軟體工程演算法/sa/alg/01-tableLookup/combinatorial (master)
+$ deno run CnkR.js 
+c(5,2)= 10
+c(7,3)= 35  
+c(12,5)= 792
+
+```
+這裡看到C60取30已經運算不出來了，複雜度太高了。
+- 再次使用查表法，範例:
+```=
+//C為一個陣列
+var C = []
+
+function c(n, k) {
+  //空陣列設定
+  if (C[n] == null) C[n] = []
+  //查表輸出
+  if (C[n][k] != null) return C[n][k]
+  if (k==0 || k==n)
+    C[n][k] = 1
+    //若上面都沒成立，進行運算
+  else 
+    C[n][k] = c(n-1,k) + c(n-1, k-1)
+    //回傳陣列
+  return C[n][k]
+}
+
+console.log("c(5,2)=", c(5,2))
+console.log("C=", C);
+console.log("c(7,3)=", c(7,3))
+console.log("c(12,5)=", c(12,5))
+console.log("c(60,30)=", c(60,30))
+
+/*
+https://en.wikipedia.org/wiki/Binomial_coefficient
+
+def binomialCoefficient(n, k):
+    if k < 0 or k > n:
+        return 0
+    if k > n - k: # take advantage of symmetry
+        k = n - k
+    if k == 0 or n <= 1:
+    	return 1
+    return binomialCoefficient(n-1, k) + binomialCoefficient(n-1, k-1)
+*/
+```
+```
+sky@MSI MINGW64 ~/Desktop/VSCode  (GITHUB)/軟體工程演算法/sa/alg/01-tableLookup/combinatorial (master)
+$ deno run CnkRLookup.js 
+c(5,2)= 10
+C= [
+  <1 empty item>,
+  [ 1, 1 ],
+  [ 1, 2, 1 ],
+  [ 1, 3, 3 ],
+  [ <1 empty item>, 4, 6 ],
+  [ <2 empty items>, 10 ]  
+]
+c(7,3)= 35
+c(12,5)= 792
+c(60,30)= 118264581564861420
+```
+- 使用迴圈，範例:
+
+```=
+function factorial(n) {
+  var p = 1
+  for (let i=1; i<=n; i++) {
+    p = p * i;
+  }
+  return p
+}
+
+function c(n, k) {
+  return factorial(n) / (factorial(k)*factorial(n-k))
+}
+
+console.log("c(5,2)=", c(5,2))
+console.log("c(7,3)=", c(7,3))
+console.log("c(12,5)=", c(12,5))
+console.log("c(60,30)=", c(60,30))
+```
+```
+$ deno run Cnk.js 
+c(5,2)= 10
+c(7,3)= 35
+c(12,5)= 792
+c(60,30)= 118264581564861470
+
+```
