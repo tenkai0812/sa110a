@@ -106,7 +106,7 @@ time:1ms
 
 ## 巴斯卡三角形
 - [巴斯卡三角形](https://zh.wikipedia.org/wiki/%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%E5%BD%A2)
-- 巴斯卡恆等式:<img src = './恆等式.PNG'>
+- 巴斯卡恆等式:<img src = './恆等式.PNG'><br>
 我們這次換成排列組合，這裡為範例:
 ```=
 function c(n, k) {
