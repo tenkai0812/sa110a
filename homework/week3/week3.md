@@ -9,3 +9,20 @@
 
 ### 軟體工程實作-Github flow
 [阮一峰的網路日誌-Git 工作流程](https://www.ruanyifeng.com/blog/2015/12/git-workflow.html)
+Github flow 設定:<br>
+|step|創建者|追隨者|
+|:-:|:-:|:-:|
+|1|創建organizations||
+|2|創建repository||
+|3|創建分支||
+|4||fork 專案|
+|5||clone fork的專案|
+|6||進行修改|
+|7||測試程式|
+|8||建立分支|
+|9||回推分支|
+|10||發起PR|
+|11|測試程式||
+|12|接受PR||
+|13|merge到main||
+
