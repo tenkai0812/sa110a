@@ -1,4 +1,4 @@
-## Viola-Jones Algorithm
+## Viola-Jones Algorithm <非原創>
 Viola-Jones Algorithm是為了達到快速辨識圖片物體檢測且有良率高的演算法，雖然可以訓練來尋找多種物體，但主要還是在解決人臉問題。<br>
 在CNN成為主流的Image classification前，Viola-Jones已經廣泛使用了。<br>
 CNN是用單一個分類器，看完完整圖像應用矩陣運算來做分類，而Viola-Jones是用多個不同的分類器，查看圖像的不同部分，Viola-Jones的單一個分類器精準度較低，容易產生更多的誤報，但當這些weak classifier 結果合併後，卻產生了一個強大的分類器<br>
